@@ -1,16 +1,23 @@
-# booking_app
+# Booking App (Flutter)
 
-A new Flutter project.
+A production-ready booking application built with Flutter & Riverpod.
 
-## Getting Started
+## Features
+- Service discovery & filtering
+- Booking flow with notifications
+- Favorites & profile management
+- Dark mode
+- Arabic / English localization
+- Skeleton loading & pull-to-refresh
 
-This project is a starting point for a Flutter application.
+## Tech Stack
+- Flutter
+- Riverpod
+- Dio
+- Firebase Auth & Firestore
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
+(Add screenshots here)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Author
+Mohannad
