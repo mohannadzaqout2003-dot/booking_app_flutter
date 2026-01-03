@@ -60,7 +60,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
     final cats = ref.watch(serviceCategoriesProvider);
     final filter = ref.watch(servicesFilterProvider);
 
-    // ✅ FutureProvider<DateTime?> -> AsyncValue<DateTime?> -> .value => DateTime?
     final updatedAt = ref.watch(servicesLastUpdatedProvider);
 
     return Scaffold(

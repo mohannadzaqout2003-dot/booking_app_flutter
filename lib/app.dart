@@ -21,8 +21,6 @@ class BookingApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeAsync = ref.watch(themeControllerProvider);
     final locale = ref.watch(localeControllerProvider);
-
-    final strings = AppStrings(AppStrings.fromLocale(locale));
     final isArabic = locale.languageCode == 'ar';
 
     return themeAsync.when(
@@ -43,7 +41,6 @@ class BookingApp extends ConsumerWidget {
           darkTheme: AppTheme.dark(),
           themeMode: mode,
 
-          // ✅ Locale
           locale: locale,
           supportedLocales: const [Locale('en'), Locale('ar')],
           localizationsDelegates: const [
@@ -52,7 +49,6 @@ class BookingApp extends ConsumerWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
 
-          // ✅ RTL/LTR
           builder: (context, child) {
             return Directionality(
               textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
@@ -60,7 +56,6 @@ class BookingApp extends ConsumerWidget {
             );
           },
 
-          // ✅ مهم لفتح BookingDetails من الإشعار
           onGenerateRoute: (settings) {
             if (settings.name == BookingDetailsRoute.name) {
               final bookingId = settings.arguments as String;

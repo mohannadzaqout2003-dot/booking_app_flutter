@@ -171,7 +171,7 @@ class ProfileScreen extends ConsumerWidget {
 
               const SizedBox(height: 14),
 
-              // ✅ Dark mode
+              //  Dark mode
               ListTile(
                 leading: Icon(isDark ? Icons.dark_mode : Icons.light_mode),
                 title: Text(strings.t('dark_mode')),
@@ -185,7 +185,7 @@ class ProfileScreen extends ConsumerWidget {
                 ),
               ),
 
-              // ✅ Language switch
+              //  Language switch
               Card(
                 elevation: 0,
                 shape: RoundedRectangleBorder(

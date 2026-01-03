@@ -12,7 +12,7 @@ class BookingRepository {
     return data.map((e) => Booking.fromJson((e as Map).cast<String, dynamic>())).toList();
   }
 
-  /// ✅ returns created booking if server returns it
+  ///  returns created booking if server returns it
   Future<Booking> createBooking(CreateBookingRequest req) async {
     final json = await _api.createBooking(req.toJson());
     final data = json['data'];

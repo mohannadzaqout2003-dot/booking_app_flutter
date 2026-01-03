@@ -42,7 +42,7 @@ class NotificationService {
     final android =
         _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
     final enabled = await android?.areNotificationsEnabled();
-    return enabled ?? true; // لو مش Android اعتبرها true
+    return enabled ?? true; 
   }
 
   Future<void> showBookingCreated({
@@ -50,17 +50,15 @@ class NotificationService {
     required String serviceTitle,
     ProviderContainer? container,
   }) async {
-    // ✅ 1) افحص toggle من Settings (إذا container موجود)
     if (container != null) {
       final asyncSettings = container.read(appSettingsProvider);
-      final settings = asyncSettings.asData?.value; // ✅ بدل valueOrNull
+      final settings = asyncSettings.asData?.value; 
 
       if (settings != null && settings.notificationsEnabled == false) {
         return;
       }
     }
 
-    // ✅ 2) افحص إذن النظام
     final allowed = await areNotificationsAllowed();
     if (!allowed) return;
 
@@ -81,7 +79,7 @@ class NotificationService {
 
     await _plugin.show(
       bookingId.hashCode,
-      'Booking Confirmed ✅',
+      'Booking Confirmed ',
       '$serviceTitle • ID: $bookingId',
       details,
       payload: payload,

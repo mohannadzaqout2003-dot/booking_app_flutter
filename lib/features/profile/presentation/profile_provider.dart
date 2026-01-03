@@ -14,7 +14,7 @@ final authStateProvider = StreamProvider<User?>((ref) {
   return ref.watch(firebaseAuthProvider).authStateChanges();
 });
 
-/// ✅ user document stream that reacts to login/logout automatically
+///  user document stream that reacts to login/logout automatically
 final userProfileProvider = StreamProvider<AppUserProfile?>((ref) async* {
   final auth = ref.watch(firebaseAuthProvider);
   final fs = ref.watch(firestoreProvider);
@@ -27,7 +27,7 @@ final userProfileProvider = StreamProvider<AppUserProfile?>((ref) async* {
 
     final docRef = fs.collection('users').doc(user.uid);
 
-    // ✅ ensure doc exists (important for social login / first time)
+    //  ensure doc exists (important for social login / first time)
     final once = await docRef.get();
     if (!once.exists) {
       await docRef.set({
@@ -42,7 +42,7 @@ final userProfileProvider = StreamProvider<AppUserProfile?>((ref) async* {
       }, SetOptions(merge: true));
     }
 
-    // ✅ now stream user doc
+    //  now stream user doc
     yield* docRef.snapshots().map((doc) {
       if (!doc.exists) return null;
       final data = doc.data() as Map<String, dynamic>;

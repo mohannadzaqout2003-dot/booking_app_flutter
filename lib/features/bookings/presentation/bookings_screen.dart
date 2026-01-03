@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:booking_app/core/lacalization/app_string.dart';
 import 'package:booking_app/core/lacalization/local_controller.dart';
 import 'package:booking_app/features/bookings/data/booking_models.dart';
