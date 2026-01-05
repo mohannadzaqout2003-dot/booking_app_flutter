@@ -1,6 +1,7 @@
 import 'package:booking_app/core/lacalization/app_string.dart';
 import 'package:booking_app/core/lacalization/local_controller.dart';
 import 'package:booking_app/core/nav/nav_ky.dart';
+import 'package:booking_app/core/nav/nav_provider.dart';
 import 'package:booking_app/core/onboarding.dart/splash_gate.dart';
 import 'package:booking_app/core/theme/app_theme.dart';
 import 'package:booking_app/features/bookings/presentation/booking_dtailees_route.dart';
@@ -83,8 +84,6 @@ class RootShell extends ConsumerStatefulWidget {
 }
 
 class _RootShellState extends ConsumerState<RootShell> {
-  int _index = 0;
-
   final _pages = const [
     ServicesScreen(),
     BookingsScreen(),
@@ -96,12 +95,14 @@ class _RootShellState extends ConsumerState<RootShell> {
   Widget build(BuildContext context) {
     final locale = ref.watch(localeControllerProvider);
     final strings = AppStrings(AppStrings.fromLocale(locale));
+    final index = ref.watch(navIndexProvider);
 
     return Scaffold(
-      body: _pages[_index],
+      body: _pages[index],
       bottomNavigationBar: NavigationBar(
-        selectedIndex: _index,
-        onDestinationSelected: (i) => setState(() => _index = i),
+        selectedIndex: index,
+        onDestinationSelected: (i) =>
+            setState(() => ref.read(navIndexProvider.notifier).state = i),
         destinations: [
           NavigationDestination(
             icon: const Icon(Icons.explore_outlined),

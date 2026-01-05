@@ -1,5 +1,6 @@
 import 'package:booking_app/core/lacalization/app_string.dart';
 import 'package:booking_app/core/lacalization/local_controller.dart';
+import 'package:booking_app/core/nav/nav_provider.dart';
 import 'package:booking_app/features/favorite/favorites_provider.dart';
 import 'package:booking_app/features/services/presentation/service_details_screen.dart';
 import 'package:booking_app/features/services/provider.dart';
@@ -30,7 +31,9 @@ class FavoritesScreen extends ConsumerWidget {
           onRetry: () => ref.invalidate(servicesProvider),
         ),
         data: (services) {
-          final favServices = services.where((x) => favs.contains(x.id)).toList();
+          final favServices = services
+              .where((x) => favs.contains(x.id))
+              .toList();
 
           if (favServices.isEmpty) {
             return EmptyStateView(
@@ -38,7 +41,9 @@ class FavoritesScreen extends ConsumerWidget {
               title: s.t('no_favorites_yet'),
               message: s.t('tap_heart_to_save'),
               primaryActionText: s.t('browse_services'),
-              onPrimaryAction: () => Navigator.of(context).pop(),
+              onPrimaryAction: () {
+                ref.read(navIndexProvider.notifier).state = 0;
+              },
             );
           }
 
@@ -73,7 +78,9 @@ class FavoritesScreen extends ConsumerWidget {
                                 // ignore: deprecated_member_use
                                 .withOpacity(0.35),
                             border: Border.all(
-                              color: Theme.of(context).colorScheme.outlineVariant,
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.outlineVariant,
                             ),
                           ),
                           child: const Icon(Icons.favorite, color: Colors.red),
@@ -92,8 +99,11 @@ class FavoritesScreen extends ConsumerWidget {
                               const SizedBox(height: 2),
                               Text(
                                 item.category,
-                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                                style: Theme.of(context).textTheme.bodySmall
+                                    ?.copyWith(
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.onSurfaceVariant,
                                     ),
                               ),
                             ],
