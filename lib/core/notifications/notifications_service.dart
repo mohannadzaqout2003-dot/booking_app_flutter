@@ -19,7 +19,7 @@ class NotificationService {
     description: 'Booking updates and reminders',
     importance: Importance.high,
   );
-
+  
   Future<void> init() async {
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
     const initSettings = InitializationSettings(android: android);
@@ -33,16 +33,20 @@ class NotificationService {
       },
     );
 
-    final androidPlugin =
-        _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+    final androidPlugin = _plugin
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >();
     await androidPlugin?.createNotificationChannel(_channel);
   }
 
   Future<bool> areNotificationsAllowed() async {
-    final android =
-        _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+    final android = _plugin
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >();
     final enabled = await android?.areNotificationsEnabled();
-    return enabled ?? true; 
+    return enabled ?? true;
   }
 
   Future<void> showBookingCreated({
@@ -52,7 +56,7 @@ class NotificationService {
   }) async {
     if (container != null) {
       final asyncSettings = container.read(appSettingsProvider);
-      final settings = asyncSettings.asData?.value; 
+      final settings = asyncSettings.asData?.value;
 
       if (settings != null && settings.notificationsEnabled == false) {
         return;
@@ -94,7 +98,7 @@ class NotificationService {
     if (bookingId.isEmpty) return;
 
     final dummy = Booking(
-      bookingId: bookingId,
+      bookingId: bookingId, 
       serviceTitle: 'Booking',
       status: 'confirmed',
       date: '',

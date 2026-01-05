@@ -45,7 +45,7 @@ class FavoritesScreen extends ConsumerWidget {
           return ListView.separated(
             padding: const EdgeInsets.all(16),
             itemCount: favServices.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
+            separatorBuilder: (_, _) => const SizedBox(height: 12),
             itemBuilder: (_, i) {
               final item = favServices[i];
 
@@ -70,6 +70,7 @@ class FavoritesScreen extends ConsumerWidget {
                             color: Theme.of(context)
                                 .colorScheme
                                 .primaryContainer
+                                // ignore: deprecated_member_use
                                 .withOpacity(0.35),
                             border: Border.all(
                               color: Theme.of(context).colorScheme.outlineVariant,

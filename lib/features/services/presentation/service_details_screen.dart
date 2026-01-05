@@ -1,10 +1,10 @@
 import 'package:booking_app/core/lacalization/app_string.dart';
+import 'package:booking_app/features/bookings/presentation/create_booking_sheet.dart';
+import 'package:booking_app/features/services/data/service_models.dart';
 import 'package:booking_app/features/services/presentation/service_map_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../bookings/presentation/create_booking_sheet.dart';
-import '../data/service_models.dart';
 
 class ServiceDetailsScreen extends StatelessWidget {
   const ServiceDetailsScreen({super.key, required this.service});
@@ -30,7 +30,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                 imageUrl: service.imageUrl,
                 height: 220,
                 fit: BoxFit.cover,
-                placeholder: (_, __) => Container(
+                placeholder: (_, _) => Container(
                   height: 220,
                   color: cs.surfaceContainerHighest,
                   alignment: Alignment.center,
@@ -43,7 +43,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                errorWidget: (_, __, ___) => Container(
+                errorWidget: (_, _, _) => Container(
                   height: 220,
                   color: cs.surfaceContainerHighest,
                   alignment: Alignment.center,

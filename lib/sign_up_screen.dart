@@ -1,4 +1,3 @@
-
 import 'package:booking_app/app.dart';
 import 'package:booking_app/features/services/data/firebase_auth_service.dart';
 import 'package:flutter/material.dart';
@@ -37,13 +36,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Future<void> _run(Future<void> Function() action) async {
     setState(() => _loading = true);
+
     try {
       await action();
       if (!mounted) return;
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const BookingApp()));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const BookingApp()),
+      );
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.toString())));
     } finally {
       if (mounted) setState(() => _loading = false);
     }
@@ -61,12 +66,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
           children: [
             Text(
               'Let’s get started',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w800),
+              style: Theme.of(
+                context,
+              ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 6),
             Text(
               'Create an account to book services.',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.black54),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: Colors.black54),
             ),
             const SizedBox(height: 20),
 
@@ -123,7 +132,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 prefixIcon: const Icon(Icons.lock_outline),
                 suffixIcon: IconButton(
                   onPressed: () => setState(() => _obscure = !_obscure),
-                  icon: Icon(_obscure ? Icons.visibility_outlined : Icons.visibility_off_outlined),
+                  icon: Icon(
+                    _obscure
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                  ),
                 ),
               ),
             ),
@@ -145,28 +158,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onPressed: _loading
                     ? null
                     : () => _run(() async {
-                          final first = _firstCtrl.text.trim();
-                          final last = _lastCtrl.text.trim();
-                          final email = _emailCtrl.text.trim();
-                          final phone = _phoneCtrl.text.trim();
-                          final pass = _passCtrl.text.trim();
-                          final confirm = _confirmCtrl.text.trim();
+                        final first = _firstCtrl.text.trim();
+                        final last = _lastCtrl.text.trim();
+                        final email = _emailCtrl.text.trim();
+                        final phone = _phoneCtrl.text.trim();
+                        final pass = _passCtrl.text.trim();
+                        final confirm = _confirmCtrl.text.trim();
 
-                          if (first.isEmpty || last.isEmpty) throw 'Please enter your name';
-                          if (email.isEmpty) throw 'Please enter email';
-                          if (pass.isEmpty) throw 'Please enter password';
-                          if (pass != confirm) throw 'Passwords do not match';
+                        if (first.isEmpty || last.isEmpty) {
+                          throw 'Please enter your name';
+                        }
+                        if (email.isEmpty) throw 'Please enter email';
+                        if (pass.isEmpty) throw 'Please enter password';
+                        if (pass != confirm) throw 'Passwords do not match';
 
-                          await _authService.signUpWithEmailPassword(
-                            firstName: first,
-                            lastName: last,
-                            phone: phone,
-                            email: email,
-                            password: pass,
-                          );
-                        }),
+                        await _authService.signUpWithEmailPassword(
+                          firstName: first,
+                          lastName: last,
+                          phone: phone,
+                          email: email,
+                          password: pass,
+                        );
+                      }),
                 child: _loading
-                    ? const SizedBox(width: 22, height: 22, child: CircularProgressIndicator(strokeWidth: 2))
+                    ? const SizedBox(
+                        width: 22,
+                        height: 22,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
                     : const Text('Create account'),
               ),
             ),
@@ -190,7 +209,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               background: Colors.white,
               foreground: Colors.black87,
               borderColor: Colors.grey.shade300,
-              onPressed: _loading ? null : () => _run(() async => _authService.signInWithGoogle()),
+              onPressed: _loading
+                  ? null
+                  : () => _run(() async => _authService.signInWithGoogle()),
             ),
             const SizedBox(height: 10),
 
@@ -199,7 +220,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               icon: Icons.facebook,
               background: const Color(0xFF1877F2),
               foreground: Colors.white,
-              onPressed: _loading ? null : () => _run(() async => _authService.signInWithFacebook()),
+              onPressed: _loading
+                  ? null
+                  : () => _run(() async => _authService.signInWithFacebook()),
             ),
             const SizedBox(height: 10),
 
@@ -208,7 +231,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               icon: Icons.apple,
               background: Colors.black,
               foreground: Colors.white,
-              onPressed: _loading ? null : () => _run(() async => _authService.signInWithApple()),
+              onPressed: _loading
+                  ? null
+                  : () => _run(() async => _authService.signInWithApple()),
             ),
 
             const SizedBox(height: 18),
@@ -220,9 +245,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onPressed: _loading
                       ? null
                       : () => Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (_) => const LoginScreen()),
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const LoginScreen(),
                           ),
+                        ),
                   child: Text('Login', style: TextStyle(color: cs.primary)),
                 ),
               ],
@@ -258,13 +285,18 @@ class _SocialButton extends StatelessWidget {
       child: ElevatedButton.icon(
         onPressed: onPressed,
         icon: Icon(icon, size: 22, color: foreground),
-        label: Text(label, style: TextStyle(color: foreground, fontWeight: FontWeight.w600)),
+        label: Text(
+          label,
+          style: TextStyle(color: foreground, fontWeight: FontWeight.w600),
+        ),
         style: ElevatedButton.styleFrom(
           backgroundColor: background,
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),
-            side: borderColor == null ? BorderSide.none : BorderSide(color: borderColor!),
+            side: borderColor == null
+                ? BorderSide.none
+                : BorderSide(color: borderColor!),
           ),
         ),
       ),

@@ -15,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _authService = FirebaseAuthService();
 
   final _emailCtrl = TextEditingController();
-  final _passCtrl = TextEditingController();
+  final _passCtrl = TextEditingController(); 
 
   bool _loading = false;
   bool _obscure = true;
@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final cs = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: const Text('Login Screen')),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),

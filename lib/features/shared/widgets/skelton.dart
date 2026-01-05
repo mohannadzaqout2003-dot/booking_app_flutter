@@ -44,6 +44,7 @@ class ServiceSkeletonCard extends StatelessWidget {
       height: 14,
       width: width,
       decoration: BoxDecoration(
+        // ignore: deprecated_member_use
         color: Colors.grey.withOpacity(0.3),
         borderRadius: BorderRadius.circular(6),
       ),

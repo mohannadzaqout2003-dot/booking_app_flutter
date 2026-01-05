@@ -1,6 +1,6 @@
-import 'package:booking_app/core/app_theme.dart';
 import 'package:booking_app/core/lacalization/local_controller.dart';
 import 'package:booking_app/core/onboarding.dart/splash_gate.dart';
+import 'package:booking_app/core/theme/app_theme.dart';
 import 'package:booking_app/core/theme/theme_controller.dart';
 import 'package:booking_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'core/notifications/notifications_srvice.dart';
+import 'core/notifications/notifications_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -11,7 +11,6 @@ import 'package:booking_app/features/shared/widgets/empty_state_view.dart';
 import 'package:booking_app/features/shared/widgets/skelton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'booking_details_screen.dart';
 
 class BookingsScreen extends ConsumerStatefulWidget {
@@ -195,7 +194,7 @@ class _BookingsScreenState extends ConsumerState<BookingsScreen> {
                             physics: const AlwaysScrollableScrollPhysics(),
                             controller: _scrollCtrl,
                             itemCount: filtered.length,
-                            separatorBuilder: (_, __) => const SizedBox(height: 12),
+                            separatorBuilder: (_, _) => const SizedBox(height: 12),
                             itemBuilder: (_, i) {
                               final b = filtered[i];
                               final isNew = (lastId != null && b.bookingId == lastId);
@@ -276,6 +275,7 @@ class _BookingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
 
+    // ignore: deprecated_member_use
     final bg = isHighlighted ? cs.primaryContainer.withOpacity(0.35) : cs.surface;
     final border = isHighlighted ? cs.primary : cs.outlineVariant;
 
@@ -288,6 +288,7 @@ class _BookingCard extends StatelessWidget {
         border: Border.all(color: border, width: isHighlighted ? 1.5 : 1),
         boxShadow: [
           BoxShadow(
+            // ignore: deprecated_member_use
             color: cs.shadow.withOpacity(0.08),
             blurRadius: 10,
             offset: const Offset(0, 4),

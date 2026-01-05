@@ -1,7 +1,7 @@
 import 'package:booking_app/core/config.dart';
 import 'package:booking_app/core/lacalization/app_string.dart';
 import 'package:booking_app/core/lacalization/local_controller.dart';
-import 'package:booking_app/core/notifications/notifications_srvice.dart';
+import 'package:booking_app/core/notifications/notifications_service.dart';
 import 'package:booking_app/features/bookings/data/booking_models.dart';
 import 'package:booking_app/features/bookings/last_create_booking_provider.dart';
 import 'package:booking_app/features/bookings/provider.dart';

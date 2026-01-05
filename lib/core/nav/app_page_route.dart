@@ -5,7 +5,7 @@ class AppPageRoute {
     return PageRouteBuilder<T>(
       transitionDuration: const Duration(milliseconds: 260),
       reverseTransitionDuration: const Duration(milliseconds: 220),
-      pageBuilder: (_, __, ___) => page,
+      pageBuilder: (_, _, _) => page,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         final fade = CurvedAnimation(
           parent: animation,

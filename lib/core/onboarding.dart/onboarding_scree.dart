@@ -158,6 +158,7 @@ class _OnbPage extends StatelessWidget {
           width: 110,
           height: 110,
           decoration: BoxDecoration(
+            // ignore: deprecated_member_use
             color: cs.primaryContainer.withOpacity(0.35),
             shape: BoxShape.circle,
             border: Border.all(color: cs.outlineVariant),

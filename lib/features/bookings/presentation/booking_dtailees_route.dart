@@ -1,7 +1,6 @@
+import 'package:booking_app/features/bookings/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../provider.dart';
 import 'booking_details_screen.dart';
 
 class BookingDetailsRoute extends ConsumerWidget {

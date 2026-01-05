@@ -1,12 +1,11 @@
 import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 class ServiceApi {
   ServiceApi(this._dio);
   final Dio _dio;
 
-  /// Expected:
-  /// { "data": [ ... ] }
   Future<List<dynamic>> getServicesList() async {
     final res = await _dio.get('/services');
     final data = res.data;

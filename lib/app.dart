@@ -2,14 +2,13 @@ import 'package:booking_app/core/lacalization/app_string.dart';
 import 'package:booking_app/core/lacalization/local_controller.dart';
 import 'package:booking_app/core/nav/nav_ky.dart';
 import 'package:booking_app/core/onboarding.dart/splash_gate.dart';
+import 'package:booking_app/core/theme/app_theme.dart';
 import 'package:booking_app/features/bookings/presentation/booking_dtailees_route.dart';
-import 'package:booking_app/features/favorite/favorite_Screen.dart';
+import 'package:booking_app/features/favorite/favorite_screen.dart';
 import 'package:booking_app/features/profile/presentation/profile_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-
-import 'core/app_theme.dart';
 import 'core/theme/theme_controller.dart';
 import 'features/bookings/presentation/bookings_screen.dart';
 import 'features/services/presentation/services_screen.dart';
@@ -44,9 +43,12 @@ class BookingApp extends ConsumerWidget {
           locale: locale,
           supportedLocales: const [Locale('en'), Locale('ar')],
           localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
+            // GlobalMaterialLocalizations.delegate,
+            // GlobalWidgetsLocalizations.delegate,
+            // GlobalCupertinoLocalizations.delegate,
+            DefaultMaterialLocalizations.delegate,
+            DefaultWidgetsLocalizations.delegate,
+            DefaultCupertinoLocalizations.delegate,
           ],
 
           builder: (context, child) {
